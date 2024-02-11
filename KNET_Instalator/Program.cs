@@ -38,26 +38,6 @@ namespace KNET_Instalator
             }
 
         }
-        static List<int> ParseNumbers(string input)
-        {
-            List<int> numbers = new();
-
-            string[] parts = input.Split(',');
-
-            foreach (string part in parts)
-            {
-                if (int.TryParse(part.Trim(), out int number))
-                {
-                    numbers.Add(number);
-                }
-                else
-                {
-                    Console.WriteLine($"Nie udało się przekonwertować '{part.Trim()}' na liczbę.");
-                }
-            }
-
-            return numbers;
-        }
     }
 
 }
