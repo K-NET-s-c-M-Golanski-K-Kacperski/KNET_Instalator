@@ -29,6 +29,7 @@ namespace KNET_Instalator
                         var mode = Console.ReadLine() == "y" ? true : false;
                         //true == silent
                         Installer.InstallApp($"{config.savePaths[chosenApp]}\\{chosenApp}installer.exe", chosenApp, mode);
+                        //idk czy usuwac instalator po instalacji?
                         Console.WriteLine($"Zainstalowano {chosenApp}");
                     }
                     else Console.WriteLine("aaa");

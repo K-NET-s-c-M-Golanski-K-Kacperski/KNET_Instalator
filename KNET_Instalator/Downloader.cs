@@ -24,6 +24,7 @@ namespace KNET_Instalator
 
                 webClient.DownloadFile(source, tempFileName);
 
+                //nazwa instalatorów ujednolicona
                 string destinationFileName = Path.Combine(path, $"{appName}installer.exe");
 
                 if (File.Exists(destinationFileName)) File.Delete(destinationFileName);

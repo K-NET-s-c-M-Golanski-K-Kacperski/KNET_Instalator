@@ -7,6 +7,7 @@ namespace KNET_Instalator
         public static void InstallApp(string path, string appName, bool mode)
         {
             var arguments = "";
+            // troche hard coded??
             if (mode) arguments = $"/S /D=\"C:\\Program Files\\{appName}\"";
             try
             {
