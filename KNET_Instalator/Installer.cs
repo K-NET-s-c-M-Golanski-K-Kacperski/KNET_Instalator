@@ -4,13 +4,17 @@ namespace KNET_Instalator
 {
     internal static class Installer 
     {
-        public static void InstallApp(string path)
+        public static void InstallApp(string path, string appName, bool mode)
         {
+            var arguments = "";
+            if (mode) arguments = $"/S /D=\"C:\\Program Files\\{appName}\"";
             try
             {
                 ProcessStartInfo psi = new()
                 {
-                    FileName = path
+                    FileName = path,
+                    //arguemnt pozwala na cichą instalację
+                    Arguments = arguments
                 };
 
                 Process process = new() { StartInfo = psi };

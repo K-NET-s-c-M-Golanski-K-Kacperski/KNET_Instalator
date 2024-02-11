@@ -24,7 +24,12 @@ namespace KNET_Instalator
                     if (config.savePaths.ContainsKey(chosenApp))
                     {
                         Downloader.DownloadInstaller(config.installerLinks[chosenApp], config.savePaths[chosenApp],chosenApp);
-                        Installer.InstallApp($"{config.savePaths[chosenApp]}\\{chosenApp}installer.exe");
+                        Console.WriteLine($"Pobrano instalator {chosenApp}");
+                        Console.WriteLine("Czy chcesz zainstalować tę aplikację w trybie cichym? [y/n]");
+                        var mode = Console.ReadLine() == "y" ? true : false;
+                        //true == silent
+                        Installer.InstallApp($"{config.savePaths[chosenApp]}\\{chosenApp}installer.exe", chosenApp, mode);
+                        Console.WriteLine($"Zainstalowano {chosenApp}");
                     }
                     else Console.WriteLine("aaa");
                 }
