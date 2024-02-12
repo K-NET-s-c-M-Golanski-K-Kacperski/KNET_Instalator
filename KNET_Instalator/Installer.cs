@@ -4,11 +4,16 @@ namespace KNET_Instalator
 {
     internal static class Installer 
     {
-        public static void InstallApp(string path, string appName, bool mode)
+        public enum InstalationMode
+        {
+            Normal,
+            Silent
+        }
+        public static void InstallApp(string path, string appName, InstalationMode mode)
         {
             var arguments = "";
             // troche hard coded??
-            if (mode) arguments = $"/S /D=\"C:\\Program Files\\{appName}\"";
+            if (mode == InstalationMode.Silent) arguments = $"/S /D=\"C:\\Program Files\\{appName}\"";
             try
             {
                 ProcessStartInfo psi = new()
@@ -26,9 +31,7 @@ namespace KNET_Instalator
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
-            
-
         }
-}
     }
+}
 

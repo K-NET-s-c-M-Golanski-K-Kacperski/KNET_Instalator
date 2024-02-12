@@ -1,19 +1,18 @@
-﻿using System.Text.Json;
+﻿using System.Reflection;
+using System.Text.Json;
 
 
 namespace KNET_Instalator
 {
     internal static class ConfigReader
     {
-        //hard coded (na razie)
-        const string pathToConfig = @"C:\Users\Dell\source\repos\KNET_Instalator\KNET_Instalator\config.json";
-
-        public static Config? ReadConfiguration(string path)
-        { 
+        public static Config? ReadConfiguration()
+        {
+            string pathToConfig = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), @"config.json");
             Config? config = new();
             try
             {
-                string json = File.ReadAllText(path);
+                string json = File.ReadAllText(pathToConfig);
                 config = JsonSerializer.Deserialize<Config>(json);
                 
             }
@@ -23,6 +22,6 @@ namespace KNET_Instalator
             }
             return config;
         }
-        public static Config? ReadConfiguration() => ReadConfiguration(pathToConfig);
+
     }
 }

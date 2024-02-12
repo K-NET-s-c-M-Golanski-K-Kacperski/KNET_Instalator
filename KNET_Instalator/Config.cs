@@ -8,7 +8,7 @@ namespace KNET_Instalator
 {
     internal class Config
     {
-        public Dictionary<string, string>? installerLinks { get; set; }
-        public Dictionary<string, string>? savePaths { get; set; }
+        public Dictionary<string, string>? InstallerLinks { get; set; }
+        public Dictionary<string, string>? SavePaths { get; set; }
     }
 }
