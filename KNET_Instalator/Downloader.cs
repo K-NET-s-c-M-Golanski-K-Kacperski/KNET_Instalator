@@ -9,7 +9,7 @@ namespace KNET_Instalator
 {
     internal static class Downloader
     {
-        public static async void DownloadInstaller(string source, string path, string appName)
+        public static async Task DownloadInstaller(string source, string path, string appName)
         {
             if (!Directory.Exists(path))
             {
@@ -23,8 +23,9 @@ namespace KNET_Instalator
                 using HttpClient client = new();
                 var uri = new Uri(source);
                 var result = await client.GetAsync(uri);
-                using FileStream fs = new(tempFileName, FileMode.Open, FileAccess.Write);
+                using FileStream fs = new(tempFileName, FileMode.OpenOrCreate, FileAccess.Write);
                 await result.Content.CopyToAsync(fs);
+                fs.Close();
                 //nazwa instalatorów ujednolicona
                 string destinationFileName = Path.Combine(path, $"{appName}installer.exe");
                 if (File.Exists(destinationFileName)) File.Delete(destinationFileName);
